@@ -1,0 +1,79 @@
+.card-style-company{
+    display: flex;
+    background-image: url('../Images/yucel.png');
+    border-radius: 20px;
+    width: 212px;
+    height: 350px;
+    margin:1px;
+    margin-bottom: 5px;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+.overlay-card-company{
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 200px;
+    height: 136px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.text-card-company{
+    color: #FFFFFF;
+    font-weight: bold;
+    align-self: flex-start;
+    margin-left: 14px;
+    margin-top: 12px;
+    margin-right: 34px;
+    margin-bottom: 0px;
+    font-size: 16pt;
+}
+.text-card-description-company{
+    color: #FFFFFF;
+    align-self: flex-start;
+    font-weight: bold;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    font-size: 8pt; 
+}
+.text-description-company{
+    justify-self: flex-end;
+    margin-bottom: 0px;
+    margin-left: 14px;
+}
+.text-card-skills-company{
+    color: #FFFFFF;
+    align-self: flex-start;
+    justify-self: flex-end;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 14px;
+    margin-bottom: 0px;
+    font-size: 8pt; 
+}
+.text-project-company{
+    margin :0px;
+    color: #FFFFFF;
+    margin-left: 5px;
+    font-size: 9px;
+    align-self: center;
+    justify-self: center;
+}
+.project-success-company{
+    margin-left: 14px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+}
+.text-success-company{
+    margin :0px;
+    color: white!important;
+    margin-left: 5px;
+    font-size: 9px;
+    align-self: center;
+    justify-self: center;
+}
+.img-project-company{
+    margin-left: 5px;
+}

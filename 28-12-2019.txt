@@ -1,0 +1,24 @@
+Sebuah web yang dibuat untuk company yang membutuhkan engineer
+
+
+
+
+
+
+
+
+
+
+Problem [Success rate masih random,Pagination Masih Error, Hire Detail Update Delete Belom] 
+
+React adalah library yang bersifat composable user interface, yang artinya kita dapat membuat berbagai UI yang bisa kita bagi menjadi beberapa komponen.
+
+DOM adalah suatu konsep atau cara logis untuk merepresentasikan struktur suatu dokumen dan bagaimana dokumen itu diakses serta dimodifikasi dalam bentuk pohon (tree)
+
+Virtual DOM kita terlebih dahulu membuat abstraksi DOM dalam bentuk virtual. Sehingga setiap perubahan terhadap struktur dokumen tidak terjadi secara langsung pada permukaan browser, akan tetapi terjadi di dalam memory
+
+Function Component
+Tidak punya state, Tidak punya lifecycle
+
+Class Component
+Punya state, Punya lifecycle

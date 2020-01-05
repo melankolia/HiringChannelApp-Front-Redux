@@ -1,0 +1,336 @@
+.navbar-style-engineer{
+    height: 89px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.1);
+}
+.container-home-engineer{
+    display:flex;
+    flex-direction: column;
+}
+.navbar-search-engineer[type=text]{
+    width: 60vw;
+    height: 50%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background: #DADADA;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 12px 20px 12px 40px;
+    background-image: url('../Images/magnifying-glass.png'); 
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    outline:none;
+}
+
+#nav-text-engineer{
+    margin-left: 35px;
+    font-weight: bold;
+    color: #9B9B9B;
+    font-size: 14pt;
+}
+.nav-avatar-engineer{
+    margin-left: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+
+}
+.nav-name-engineer{
+    margin-left: 10px;
+    font-weight: bold;
+    color: #000000;
+    font-size: 14pt;
+}
+.border-vertical-engineer{
+    margin-left: 70px;
+    width: 46.04px;
+    height: 0px;
+    left: 1192px;
+    top: 21.98px;
+    border: 1px solid #CECECE;
+    transform: rotate(90deg);
+}
+.nav-chat-engineer{
+    margin-left: 20px;
+    width: 25px;
+    height: 25px;
+}
+.nav-bell-engineer{
+    margin-left: 20px;
+    width: 25px;
+    height: 25px;
+}
+#nav-dropdown-engineer{
+    color: #000000;
+    font-weight: bold;
+}
+.card-container-engineer{
+    margin-top: 40px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: center;
+    width: 70%;
+}
+.crud-engineer-engineer{
+    margin-left: 35px;
+    padding-top: 12px!important;
+    padding: 40px;
+    width: 30vw;
+    background-color: #DADADA;
+    border-radius: 20px;
+}
+.update-name-text-engineer{
+    padding-top: 9px;
+    font-size: 9pt;
+    margin-bottom: 0px;
+    color:black;
+    font-weight: bold;
+}
+.update-name-control-engineer{
+    margin-bottom: 10px;
+    width: 20vw;
+}
+
+.update-description-text-engineer{
+    font-size: 9pt;
+    margin-bottom: 0px;
+    color:black;
+    font-weight: bold;
+}
+.update-description-control-engineer{
+    margin-bottom: 10px;
+    width: 20vw;
+}
+.update-location-text-engineer{
+    font-size: 9pt;
+    margin-bottom: 0px;
+    color:black;
+    font-weight: bold;
+}
+.update-location-control-engineer{
+    margin-bottom: 30px;
+    width: 20vw;
+}
+.searching-type-engineer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-top: 20px;
+    margin-bottom:10px;
+    margin-right:20px;
+    margin-left:10px;
+    border-radius: 10px;
+    height: 40px;
+    width: 100vw;
+    
+}
+.button-apply1-engineer{
+  align-self: center;
+  justify-self: center;
+  height: 100%;
+  width: 5%;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  font-weight: bold;
+}
+.button-apply2-engineer{
+    align-self: center;
+    justify-self: center;
+    height: 100%;
+    width: 5%;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+.button-apply3-engineer{
+    align-self: center;
+    justify-self: center;
+    height: 100%;
+    width: 5%;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+}
+.update-skills-text-engineer{
+    font-size: 12pt;
+    margin-bottom: 0px;
+    color:black;
+    font-weight: bold;
+}
+.update-skills-control-engineer{
+    margin-bottom: 40px;
+    width: 20vw;
+}
+.navbar-search-skill-engineer[type=text]{
+    width: 12%;
+    height: 100%;
+    -webkit-transition: width 0.4s step-end;
+    transition: width 0.4s ease-in-out;
+    background: #DADADA;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 12px 20px 12px 40px;
+    background-image: url('../Images/magnifying-glass.png'); 
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    outline:none;
+    margin-right: 10px;
+}
+.select-page-engineer{
+    width: 85px;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.page-section-engineer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+}
+.buttonpage-engineer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin:6px;
+    border-radius: 15px;
+    background-color: #DADADA;
+    border:2px solid #ccc;
+    color: black;
+    font-weight: bold;
+}
+.button-page-engineer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin:2px;
+    border-radius: 10px;
+    background-color: #DADADA;
+    border:2px solid #ccc;
+    color: black;
+    font-weight: bold;
+}
+.text-page-engineer{
+    margin: 0px;
+    margin-left: 4px;
+    margin-right: 4px;
+    align-self: center;
+    justify-self: center;
+    font-weight: bold;
+}
+.crud-engineer-engineer-front{
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+    padding-top: 30px!important;
+    padding: 40px;
+    width: 30vw;
+    background-color: #DADADA;
+    border-radius: 20px;
+}
+.project-list{
+    font-size: 16pt;
+    font-weight: bold;
+    padding-top: 9px;
+}
+.update-name-skills-engineer{
+    padding-top: 9px;
+    font-size: 16pt;
+    margin-bottom: 16px;
+    color:black;
+    font-weight: bold;
+}
+.update-birthdate-text-engineer{
+    font-size: 9pt;
+    margin-bottom: 0px;
+    color:black;
+    font-weight: bold;
+}
+.button-update-engineer{
+    width: 25%;
+    margin-top: 20px;
+    margin:2px;
+}
+.skill-list{
+    height: 35vh!important;
+    width: 95%;
+}
+.input-group{
+    width: 95%;
+}
+.insert-button{
+    font-weight: bold;
+}
+.delete-button{
+    font-weight: bold;
+}
+.crud-engineer-projectlist{
+    padding-left: 15px!important;
+    margin-left: 10px;
+    padding-top: 12px!important;
+    padding: 40px;
+    width: 50vw;
+    border-radius: 20px;
+}
+.crud-engineer-profile{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    padding-top: 12px!important;
+    padding: 15px;
+    width: 30vw;
+    border-radius: 10px;
+    padding-left: 10px;
+    
+}
+.crud-engineer-skills{
+    margin-left: 35px;
+    padding-top: 12px!important;
+    padding: 15px;
+    width: 20vw;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+.table-projectlist{
+    background-color: white;
+}
+.buttonacc{
+    border-radius: 30px;
+    border-color: seagreen;
+    background-color: seagreen;
+}
+.buttonrefuse{
+    background-color: #CA302D;
+    border-color: #CA302D;
+    border-radius:30px;
+}
+.Birthday{
+    width: 72%;
+    margin: 0 0 10px;
+    border-color: #DADADA 1px;
+    padding: 4px 12px;
+    
+}
+.button-place{
+    margin-top: 25px;
+    align-content: center;
+}
