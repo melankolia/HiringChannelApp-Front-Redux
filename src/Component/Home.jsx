@@ -370,7 +370,6 @@ class Home extends Component {
                 defaultValue={Name}
                 onChange={e => {
                   this.setState({companyBeta: {
-                    ...this.state,
                     Name:e.target.value 
                   }});
                   console.log(e.target.value);
@@ -387,7 +386,6 @@ class Home extends Component {
                 onChange={e => {
                   this.setState({ 
                     companyBeta: {
-                      ...this.state,
                       Description:e.target.value
                     }
                    });
@@ -402,7 +400,6 @@ class Home extends Component {
                 onChange={e => {
                   this.setState({ 
                     companyBeta: {
-                      ...this.state,
                       Location: e.target.value }
                     });
                   console.log(e.target.value);
