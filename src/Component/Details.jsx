@@ -62,18 +62,19 @@ class Details extends Component {
         });
       })
       .catch(err => console.log(err));
+      console.log(this.props.company.companyBeta.id)
   };
   handlingHireButton = () => {
     const url = "https://hiring-channel-app.herokuapp.com/api/projects";
 
     let data = {
       id_engineer: this.props.location.state.idengineer,
-      id_company: this.props.company.companyBeta.id,
+      id_company: this.props.location.state.idcompany,
       name_project: this.state.Project,
       status_project: "Sent",
       status_engineer: "Received"
     };
-
+    console.log('DETAILS : ', data)
     axios
       .post(url, data)
       .then(res => {

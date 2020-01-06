@@ -47,7 +47,8 @@ class Cards extends Component {
         to={{
           pathname: "/engineer/detail",
           state: {
-            idengineer: this.props.idengineer,
+            idcompany: this.props.idcompany,
+            idengineer: this.props.idengineer
           }
         }}
       >
