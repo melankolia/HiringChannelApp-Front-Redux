@@ -58,8 +58,8 @@ class Home extends Component {
     }
 
     const url = [
-      "http://localhost:8000/api/" + role + "/get/" + usernameLocal,
-      "http://localhost:8000/api/projects"
+      "https://hiring-channel-app.herokuapp.com/api/" + role + "/get/" + usernameLocal,
+      "https://hiring-channel-app.herokuapp.com/api/projects"
     ];
 
     let config = {
@@ -126,9 +126,9 @@ class Home extends Component {
     };
 
     await this.props.dispatch(getAllEngineer(config));
-    const engineersBeta = await this.props.engineersBeta;
-    const totalPage = await this.props.totalPage;
-    const currentPage = await this.props.currentPage;
+    const engineersBeta = await this.props.Home.engineersBeta;
+    const totalPage = await this.props.Home.totalPage;
+    const currentPage = await this.props.Home.currentPage;
 
     console.log(engineersBeta);
     console.log(totalPage);
@@ -168,9 +168,9 @@ class Home extends Component {
     };
 
     await this.props.dispatch(getAllEngineer(config));
-    const engineersBeta = await this.props.engineersBeta;
-    const totalPage = await this.props.totalPage;
-    const currentPage = await this.props.currentPage;
+    const engineersBeta = await this.props.Home.engineersBeta;
+    const totalPage = await this.props.Home.totalPage;
+    const currentPage = await this.props.Home.currentPage;
 
     console.log(engineersBeta);
     console.log(totalPage);
@@ -184,7 +184,7 @@ class Home extends Component {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
     const url =
-      "http://localhost:8000/api/company/" +
+      "https://hiring-channel-app.herokuapp.com/api/company/" +
       parseInt(this.state.companyBeta.id);
     let data = {
       Name: this.state.companyBeta.Name,
