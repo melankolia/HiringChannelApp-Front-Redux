@@ -21,7 +21,7 @@ class Home extends Component {
     this.state = {
       engineersBeta: [],
       role: '',
-      companyBeta: "",
+      companyBeta: '',
       toggleProfile: "1",
       token: "",
       valueName: "",
@@ -191,6 +191,7 @@ class Home extends Component {
       Description: this.state.companyBeta.Description,
       Location: this.state.companyBeta.Location
     };
+    console.log(data)
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
     await axios
       .patch(url, null, {
