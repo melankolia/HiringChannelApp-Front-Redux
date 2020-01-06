@@ -19,6 +19,9 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
+      nama:'',
+      description:'',
+      location:'',
       engineersBeta: [],
       role: '',
       companyBeta: '',
@@ -187,9 +190,9 @@ class Home extends Component {
       "https://hiring-channel-app.herokuapp.com/api/company/" +
       parseInt(this.state.companyBeta.id);
     let data = {
-      Name: this.state.companyBeta.Name,
-      Description: this.state.companyBeta.Description,
-      Location: this.state.companyBeta.Location
+      Name: this.state.nama,
+      Description: this.state.description,
+      Location: this.state.location
     };
     console.log(data)
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
@@ -369,9 +372,7 @@ class Home extends Component {
                 type="text"
                 defaultValue={Name}
                 onChange={e => {
-                  this.setState({companyBeta: {
-                    Name:e.target.value 
-                  }});
+                  this.setState({ nama: e.target.value });
                   console.log(e.target.value);
                 }}
               />
@@ -384,11 +385,7 @@ class Home extends Component {
                 rows="3"
                 defaultValue={Description}
                 onChange={e => {
-                  this.setState({ 
-                    companyBeta: {
-                      Description:e.target.value
-                    }
-                   });
+                  this.setState({ description: e.target.value });
                   console.log(e.target.value);
                 }}
               />
@@ -398,10 +395,7 @@ class Home extends Component {
                 type="text"
                 defaultValue={Location}
                 onChange={e => {
-                  this.setState({ 
-                    companyBeta: {
-                      Location: e.target.value }
-                    });
+                  this.setState({ location: e.target.value });
                   console.log(e.target.value);
                 }}
               />
