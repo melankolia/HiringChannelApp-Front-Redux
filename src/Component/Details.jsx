@@ -30,7 +30,7 @@ class Details extends Component {
 
   getEngineer = async () => {
     let url = [
-      "http://localhost:8000/api/engineer/get/detail/" +
+      "https://hiring-channel-app.herokuapp.com/api/engineer/get/detail/" +
         this.props.location.state.idengineer
     ];
     await axios
@@ -64,7 +64,7 @@ class Details extends Component {
       .catch(err => console.log(err));
   };
   handlingHireButton = () => {
-    const url = "http://localhost:8000/api/projects";
+    const url = "https://hiring-channel-app.herokuapp.com/api/projects";
 
     let data = {
       id_engineer: this.props.location.state.idengineer,
