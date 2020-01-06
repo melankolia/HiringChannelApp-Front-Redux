@@ -68,7 +68,7 @@ class Details extends Component {
 
     let data = {
       id_engineer: this.props.location.state.idengineer,
-      id_company: this.props.location.state.idcompany,
+      id_company: this.props.companyBeta.id,
       name_project: this.state.Project,
       status_project: "Sent",
       status_engineer: "Received"
@@ -178,7 +178,7 @@ class Details extends Component {
 
 const mapStateToProps = state => {
   return {
-    engineersBeta: state.user.engineersBeta
+    companyBeta: state.company.companyBeta
   };
 };
 

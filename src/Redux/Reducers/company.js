@@ -1,40 +1,36 @@
 const initialState = {
-    engineersBeta: [],
-    totalPage: '',
-    currentPage: '',
+    companyBeta: [],
     isPending: false,
     isRejected: false,
     isFulfilled: false
   };
   
-  const userReducer = (prevState = initialState, action) => {
+  const companyReducer = (prevState = initialState, action) => {
     switch (action.type) {
-      case "GET_ALL_ENGINEER_PENDING":
+      case "GET_COMPANY_PENDING":
         return {
           ...prevState,
           isPending: true,
           isRejected: false,
           isFulfilled: false
         };
-      case "GET_ALL_ENGINEER_REJECTED":
+      case "GET_COMPANY_REJECTED":
         return {
           ...prevState,
           isPending: false,
           isRejected: true
         };
-      case "GET_ALL_ENGINEER_FULFILLED":
+      case "GET_COMPANY_FULFILLED":
         return {
           ...prevState,
           isPending: false,
           isFulfilled: true,
-          engineersBeta: action.payload.data.data.response,
-          totalPage: action.payload.data.data.totalpage,
-          currentPage: action.payload.data.data.currentPage
+          companyBeta: action.payload.data[0],
         };
       default:
         return prevState;
     }
   };
   
-  export default userReducer;
+  export default companyReducer;
   

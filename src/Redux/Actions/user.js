@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const URL_STRING = "http://localhost:8000/api/engineer";
+const URL_STRING = "http://localhost:8000/api/engineer/search";
 
 export const getAllEngineer = (config) => {
   console.log(config)

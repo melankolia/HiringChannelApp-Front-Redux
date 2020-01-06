@@ -13,28 +13,20 @@ import Profile from "./Profile.jsx";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getAllEngineer } from "../Redux/Actions/user";
+import { getCompany } from "../Redux/Actions/company";
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      id: "",
-      nama: "",
       engineersBeta: [],
+      role: '',
       companyBeta: "",
       toggleProfile: "1",
-      description: "",
-      skills: "",
-      location: "",
       token: "",
       valueName: "",
       valueSkills: "",
-      searchType: "searchName=",
-      searchSkills: "searchSkills=",
-      sorting: "&sorting=ASC&",
-      limit: "&Limit=",
-      valueLimit: "6",
-      page: "&Page=",
+      valueLimit: 6,
       currentPage: "",
       valuePage: "1",
       totalPage: "",
@@ -67,51 +59,48 @@ class Home extends Component {
 
     const url = [
       "http://localhost:8000/api/" + role + "/get/" + usernameLocal,
-      `http://localhost:8000/api/engineer/search?${this.state.searchType}${this.state.valueName}${this.state.sorting}${this.state.searchSkills}${this.state.valueSkills}${this.state.limit}${this.state.valueLimit}${this.state.page}${Page}`,
       "http://localhost:8000/api/projects"
     ];
 
-    const config = {
+    let config = {
       headers: { Authorization: "Bearer " + token, username: usernameLocal }
     };
 
-    await axios
-      .get(url[0], config)
+    await this.props.dispatch(getCompany(config, usernameLocal));
+    const companyBeta = await this.props.companyBeta;
+    this.setState({
+      role:role,
+      companyBeta: companyBeta
+    })
+    console.log('Company Beta : ', companyBeta);
 
-      .then(res => {
-        this.setState({
-          id: res.data[0].id,
-          nama: res.data[0].Name,
-          description: res.data[0].Description,
-          location: res.data[0].Location,
-          skills: res.data[0].Skills,
-          role: role,
-          currentPage: res.data[0].currentPage,
-          companyBeta: res.data[0]
-        });
-      })
+    config = {
+      headers: { Authorization: "Bearer " + token, username: usernameLocal },
+      params: {
+        searchName: this.state.valueName,
+        orting: "ASC",
+        searchSkills: this.state.valueSkills,
+        Limit: this.state.valueLimit,
+        Page: Page
+      }
+    };
 
-      .catch(err => console.log(err));
-
-    // await axios
-    //   .get(url[1], config)
-    //   .then(res => {
-    //     this.setState({
-    //       engineersBeta: res.data.data.response,
-    //       totalPage: res.data.data.totalpage,
-    //       currentPage: res.data.data.currentPage
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
     await this.props.dispatch(getAllEngineer(config));
     const engineersBeta = await this.props.engineersBeta;
-    console.log(engineersBeta)
+    const totalPage = await this.props.totalPage;
+    const currentPage = await this.props.currentPage;
+
+    console.log(engineersBeta);
+    console.log(totalPage);
+    console.log(currentPage);
     this.setState({
-      engineersBeta: engineersBeta
+      engineersBeta: engineersBeta,
+      totalPage: totalPage,
+      currentPage: currentPage
     });
 
     await axios
-      .get(url[2], { params: { id_company: this.state.id } })
+      .get(url[1], { params: { id_company: this.state.companyBeta.id } })
       .then(res => {
         this.setState({
           projects: res.data.data
@@ -122,37 +111,32 @@ class Home extends Component {
   searching = async (Name, Skill) => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    // let role = localStorage.getItem('role :')
     let searchName = Name || "";
     let searchSkill = Skill || "";
 
-    console.log(
-      `http://localhost:8000/api/engineer/search?${this.state.searchType}${searchName}${this.state.sorting}${this.state.searchSkills}${searchSkill}${this.state.limit}${this.state.valueLimit}${this.state.page}${this.state.valuePage}`
-    );
-    const url = [
-      `http://localhost:8000/api/engineer/search?${this.state.searchType}${searchName}${this.state.sorting}${this.state.searchSkills}${searchSkill}${this.state.limit}${this.state.valueLimit}${this.state.page}${this.state.valuePage}`
-    ];
-
-    this.setState({
-      valueName: searchName,
-      valueSkills: searchSkill,
-      link: url[0]
-    });
-
     const config = {
-      headers: { Authorization: "Bearer " + token, username: usernameLocal }
+      headers: { Authorization: "Bearer " + token, username: usernameLocal },
+      params: {
+        searchName: searchName,
+        sorting: "ASC",
+        searchSkills: searchSkill,
+        Limit: this.state.valueLimit,
+        Page: this.state.valuePage
+      }
     };
 
-    await axios
-      .get(url[0], config)
-      .then(res => {
-        this.setState({
-          engineersBeta: res.data.data.response,
-          totalPage: res.data.data.totalpage,
-          currentPage: res.data.data.currentPage
-        });
-      })
-      .catch(err => console.log(err));
+    await this.props.dispatch(getAllEngineer(config));
+    const engineersBeta = await this.props.engineersBeta;
+    const totalPage = await this.props.totalPage;
+    const currentPage = await this.props.currentPage;
+
+    console.log(engineersBeta);
+    console.log(totalPage);
+    console.log(currentPage);
+    this.setState({
+      engineersBeta: engineersBeta,
+      currentPage: currentPage
+    });
   };
 
   pagination = async textPage => {
@@ -171,31 +155,41 @@ class Home extends Component {
     if (Page <= 0) {
       Page = 1;
     }
-    const url = [
-      `http://localhost:8000/api/engineer/search?${this.state.searchType}${this.state.valueName}${this.state.sorting}${this.state.searchSkills}${this.state.valueSkills}${this.state.limit}${this.state.valueLimit}${this.state.page}${Page}`
-    ];
-    const config = {
-      headers: { Authorization: "Bearer " + token, username: usernameLocal }
+
+    let config = {
+      headers: { Authorization: "Bearer " + token, username: usernameLocal },
+      params: {
+        searchName: this.state.valueName,
+        sorting: "ASC",
+        searchSkills: this.state.valueSkills,
+        Limit: this.state.valueLimit,
+        Page: Page
+      }
     };
 
-    await axios
-      .get(url[0], config)
-      .then(res => {
-        this.setState({
-          engineersBeta: res.data.data.response,
-          currentPage: res.data.data.currentPage
-        });
-      })
-      .catch(err => console.log(err));
+    await this.props.dispatch(getAllEngineer(config));
+    const engineersBeta = await this.props.engineersBeta;
+    const totalPage = await this.props.totalPage;
+    const currentPage = await this.props.currentPage;
+
+    console.log(engineersBeta);
+    console.log(totalPage);
+    console.log(currentPage);
+    this.setState({
+      engineersBeta: engineersBeta,
+      currentPage: currentPage
+    });
   };
   patchCompany = async () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = "http://localhost:8000/api/company/" + parseInt(this.state.id);
+    const url =
+      "http://localhost:8000/api/company/" +
+      parseInt(this.state.companyBeta.id);
     let data = {
-      Name: this.state.nama,
-      Description: this.state.description,
-      Location: this.state.location
+      Name: this.state.companyBeta.Name,
+      Description: this.state.companyBeta.Description,
+      Location: this.state.companyBeta.Location
     };
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
     await axios
@@ -223,12 +217,11 @@ class Home extends Component {
   componentDidMount() {
     console.log("Did Mount");
     this.getAllengineer();
-    console.log(this.props.user)
   }
 
   render() {
-    const { skills, role } = this.state;
-    const { Name, Description, Location } = this.state.companyBeta;
+    const { role } = this.state;
+    const { id, Name, Description, Location } = this.state.companyBeta;
     console.log("Render");
 
     if (role === "engineer") {
@@ -345,7 +338,7 @@ class Home extends Component {
             this.state.engineersBeta.map((_, idx) => (
               <Cards
                 key={idx}
-                idcompany={this.state.id}
+                idcompany={id}
                 idengineer={this.state.engineersBeta[idx].id}
                 nama={this.state.engineersBeta[idx].Name}
                 skills={this.state.engineersBeta[idx].Skills}
@@ -353,13 +346,11 @@ class Home extends Component {
                 role={role}
               />
             ))
-
           ) : this.state.toggleProfile === "2" ||
             this.state.toggleProfile === "3" ? (
             <Profile
               nama={Name}
               description={Description}
-              skills={skills}
               role={role}
               location={Location}
             />
@@ -375,7 +366,7 @@ class Home extends Component {
               <Form.Control
                 className="update-name-control"
                 type="text"
-                defaultValue={this.state.nama}
+                defaultValue={Name}
                 onChange={e => {
                   this.setState({ nama: e.target.value });
                   console.log(e.target.value);
@@ -388,7 +379,7 @@ class Home extends Component {
                 className="update-description-control"
                 as="textarea"
                 rows="3"
-                defaultValue={this.state.description}
+                defaultValue={Description}
                 onChange={e => {
                   this.setState({ description: e.target.value });
                   console.log(e.target.value);
@@ -398,7 +389,7 @@ class Home extends Component {
               <Form.Control
                 className="update-location-control"
                 type="text"
-                defaultValue={this.state.location}
+                defaultValue={Location}
                 onChange={e => {
                   this.setState({ location: e.target.value });
                   console.log(e.target.value);
@@ -469,7 +460,10 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    engineersBeta: state.user.engineersBeta
+    engineersBeta: state.user.engineersBeta,
+    totalPage: state.user.totalPage,
+    currentPage: state.user.currentPage,
+    companyBeta: state.company.companyBeta
   };
 };
 
