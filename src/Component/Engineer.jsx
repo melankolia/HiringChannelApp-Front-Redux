@@ -66,8 +66,8 @@ class Engineer extends Component {
     }
 
     const url = [
-      "https://hiring-channel-app.herokuapp.com/api/" + role + "/get/" + usernameLocal,
-      "https://hiring-channel-app.herokuapp.com/api/projects"
+      "http://localhost:8000/api/" + role + "/get/" + usernameLocal,
+      "http://localhost:8000/api/projects"
     ];
 
     const config = {
@@ -122,7 +122,7 @@ class Engineer extends Component {
   patchUser = async () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = "https://hiring-channel-app.herokuapp.com/api/engineer/" + parseInt(this.state.id);
+    const url = "http://localhost:8000/api/engineer/" + parseInt(this.state.id);
     let data = {
       Name: this.state.nama,
       Description: this.state.description,
@@ -160,7 +160,7 @@ class Engineer extends Component {
   postSkill = () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = "https://hiring-channel-app.herokuapp.com/api/engineer/skills";
+    const url = "http://localhost:8000/api/engineer/skills";
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
     let data = {
       id_Engineer: this.state.id,
@@ -198,7 +198,7 @@ class Engineer extends Component {
   deleteSkills = () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = `https://hiring-channel-app.herokuapp.com/api/engineer/skills/${this.state.id}`;
+    const url = `http://localhost:8000/api/engineer/skills/${this.state.id}`;
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
     if (this.state.skillupdate || this.state.skilldelete) {
       axios
@@ -234,7 +234,7 @@ class Engineer extends Component {
 
 
     const url =
-      "https://hiring-channel-app.herokuapp.com/api/projects/" + this.state.projects[idx].No;
+      "http://localhost:8000/api/projects/" + this.state.projects[idx].No;
 
     const data = {
       status_project: status_project,

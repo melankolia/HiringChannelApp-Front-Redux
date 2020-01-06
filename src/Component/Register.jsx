@@ -31,7 +31,7 @@ class Register extends Component {
     };
 
     axios
-      .post("https://hiring-channel-app.herokuapp.com/auth/register", data)
+      .post("http://localhost:8000/auth/register", data)
       .then(res => {
         if (res.data.status === 200) {
           this.setState({
