@@ -137,6 +137,9 @@ class Home extends Component {
     console.log(totalPage);
     console.log(currentPage);
     this.setState({
+      nama: engineersBeta.Name,
+      description: engineersBeta.Description,
+      location: engineersBeta.Location,
       engineersBeta: engineersBeta,
       currentPage: currentPage
     });
