@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const URL_STRING = "http://localhost:8000/api/company/get/";
+const URL_STRING = "https://hiring-channel-app.herokuapp.com/api/company/get/";
 
 export const getCompany = (config, username) => {
   console.log(config)
