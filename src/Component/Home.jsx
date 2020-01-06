@@ -369,7 +369,10 @@ class Home extends Component {
                 type="text"
                 defaultValue={Name}
                 onChange={e => {
-                  this.setState({ nama: e.target.value });
+                  this.setState({companyBeta: {
+                    ...this.state,
+                    Name:e.target.value 
+                  }});
                   console.log(e.target.value);
                 }}
               />
@@ -382,7 +385,12 @@ class Home extends Component {
                 rows="3"
                 defaultValue={Description}
                 onChange={e => {
-                  this.setState({ description: e.target.value });
+                  this.setState({ 
+                    companyBeta: {
+                      ...this.state,
+                      Description:e.target.value
+                    }
+                   });
                   console.log(e.target.value);
                 }}
               />
@@ -392,7 +400,11 @@ class Home extends Component {
                 type="text"
                 defaultValue={Location}
                 onChange={e => {
-                  this.setState({ location: e.target.value });
+                  this.setState({ 
+                    companyBeta: {
+                      ...this.state,
+                      Location: e.target.value }
+                    });
                   console.log(e.target.value);
                 }}
               />
