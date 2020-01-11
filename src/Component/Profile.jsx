@@ -11,6 +11,7 @@ class Profile extends Component {
           <Cards
             nama={this.props.nama}
             description={this.props.description}
+            title={this.props.title}
             skills={this.props.skills}
             role={this.props.role}
             idengineer={this.props.idengineer}

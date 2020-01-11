@@ -138,7 +138,7 @@ class Home extends Component {
     console.log(currentPage);
     this.setState({
       nama: engineersBeta[0].Name,
-      description: engineersBeta[0].Description,
+      title: engineersBeta[0].Title,
       location: engineersBeta[0].Location,
       engineersBeta: engineersBeta,
       currentPage: currentPage
@@ -349,7 +349,7 @@ class Home extends Component {
                 idengineer={this.state.engineersBeta[idx].id}
                 nama={this.state.engineersBeta[idx].Name}
                 skills={this.state.engineersBeta[idx].Skills}
-                description={this.state.engineersBeta[idx].Description}
+                title={this.state.engineersBeta[idx].Title}
                 role={role}
               />
             ))
@@ -388,7 +388,7 @@ class Home extends Component {
                 rows="3"
                 defaultValue={Description}
                 onChange={e => {
-                  this.setState({ description: e.target.value });
+                  this.setState({ title: e.target.value });
                   console.log(e.target.value);
                 }}
               />

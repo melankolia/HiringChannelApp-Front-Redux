@@ -59,7 +59,7 @@ class Cards extends Component {
           <div className="overlay-card">
             <p className="text-card">{this.props.nama}</p>
             <div className="text-card-description">
-              <p className="text-description">{this.props.description}</p>
+              <p className="text-description">{this.props.title}</p>
               <div className="project-success">
                 <img src={check} alt="check-ico" />
                 <p className="text-project">{totalProject} Project</p>
@@ -80,7 +80,7 @@ class Cards extends Component {
         <div className="overlay-card">
           <p className="text-card">{this.props.nama}</p>
           <div className="text-card-description">
-            <p className="text-description">{this.props.description}</p>
+            <p className="text-description">{this.props.title}</p>
             <div className="project-success">
               <img src={check} alt="check-ico" />
               <p className="text-project">{totalProject} Project</p>

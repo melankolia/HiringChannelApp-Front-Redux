@@ -52,6 +52,7 @@ class Details extends Component {
 
         this.setState({
           Name: res.data[0].Name,
+          Title: res.data[0].Title,
           Description: res.data[0].Description,
           Location: res.data[0].Location,
           Skills: res.data[0].Skills,
@@ -99,6 +100,7 @@ class Details extends Component {
   render() {
     const {
       Name,
+      Title,
       Description,
       Skills,
       Location,
@@ -127,14 +129,14 @@ class Details extends Component {
           <p className="profile">Engineer Profile </p>
         </div>
         <div className="card-container-detail">
-          <Cards idengineer={this.props.location.state.idengineer} nama={Name} description={Description} skills={Skills} />
+          <Cards idengineer={this.props.location.state.idengineer} nama={Name} title={Title} description={Description} skills={Skills} />
 
           <div className="crud-engineer-profile">
             <p className="update-name-text-engineer">Name</p>
             <p className="update-name-control-engineer">{Name || "-"}</p>
-            <p className="update-description-text-engineer">Description</p>
+            <p className="update-description-text-engineer">Title</p>
             <p className="update-description-control-engineer">
-              {Description || "-"}
+              {Title || "-"}
             </p>
             <p className="update-description-text-engineer">Location</p>
             <p className="update-description-control-engineer">

@@ -28,6 +28,7 @@ class Engineer extends Component {
       toggleProfile: true,
       toggleUpdate: "1",
       description: "",
+      title: "",
       skills: "",
       location: "",
       token: "",
@@ -66,21 +67,23 @@ class Engineer extends Component {
     }
 
     const url = [
-      "https://hiring-channel-app.herokuapp.com/api/" + role + "/get/" + usernameLocal,
+      "https://hiring-channel-app.herokuapp.com/api/" +
+        role +
+        "/get/" +
+        usernameLocal,
       "https://hiring-channel-app.herokuapp.com/api/projects"
     ];
 
     const config = {
       headers: { Authorization: "Bearer " + token, username: usernameLocal }
     };
-  
+
     await axios
       .get(url[0], config)
 
       .then(res => {
-
         let dateTemporary;
-        let Skills
+        let Skills;
         if (res.data[0].DateofBirth) {
           dateTemporary = res.data[0].DateofBirth.slice(0, 10);
         } else {
@@ -96,6 +99,7 @@ class Engineer extends Component {
           id: res.data[0].id,
           nama: res.data[0].Name,
           description: res.data[0].Description,
+          title: res.data[0].Title,
           location: res.data[0].Location,
           skills: Skills,
           role: role,
@@ -108,24 +112,25 @@ class Engineer extends Component {
       .catch(err => console.log(err));
 
     await axios
-      .get(url[1], { params: {id_engineer: this.state.id} })
+      .get(url[1], { params: { id_engineer: this.state.id } })
 
       .then(res => {
-
         this.setState({
           projects: res.data.data
         });
-
       })
       .catch(err => console.log(err));
+      console.log(this.state)
   };
   patchUser = async () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = "https://hiring-channel-app.herokuapp.com/api/engineer/" + parseInt(this.state.id);
+    const url =
+      "https://hiring-channel-app.herokuapp.com/api/engineer/" +
+      parseInt(this.state.id);
     let data = {
       Name: this.state.nama,
-      Description: this.state.description,
+      Title: this.state.title,
       DateofBirth: this.state.dateofbirth
     };
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
@@ -153,7 +158,7 @@ class Engineer extends Component {
   cancelPatch = () => {
     this.setState({
       nama: this.state.response[0].Name,
-      description: this.state.response[0].Description,
+      title: this.state.response[0].Title,
       dateofbirth: this.state.response[0].DateofBirth.slice(0, 10)
     });
   };
@@ -231,10 +236,9 @@ class Engineer extends Component {
   };
 
   patchStatusProject = (idx, status_project, status_engineer) => {
-
-
     const url =
-      "https://hiring-channel-app.herokuapp.com/api/projects/" + this.state.projects[idx].No;
+      "https://hiring-channel-app.herokuapp.com/api/projects/" +
+      this.state.projects[idx].No;
 
     const data = {
       status_project: status_project,
@@ -268,7 +272,14 @@ class Engineer extends Component {
   }
   render() {
     const { role } = this.state;
-    const { Name, Description, Location, Skills, id } = this.state.response;
+    const {
+      Name,
+      Title,
+      Description,
+      Location,
+      Skills,
+      id
+    } = this.state.response;
     return (
       <div className="container-home-engineer">
         <Navbar className="navbar-style-engineer">
@@ -334,6 +345,7 @@ class Engineer extends Component {
           {!this.state.toggleProfile ? (
             <Profile
               nama={Name}
+              title={Title}
               description={Description}
               skills={Skills}
               role={role}
@@ -343,6 +355,7 @@ class Engineer extends Component {
           ) : (
             <Profile
               nama={Name}
+              title={Title}
               description={Description}
               skills={Skills}
               role={role}
@@ -370,66 +383,70 @@ class Engineer extends Component {
                           <td>{this.state.projects[idx].CompanyName}</td>
                           <td>{this.state.projects[idx].name_project}</td>
                           <td>{this.state.projects[idx].status_engineer}</td>
-                          
-                          {this.state.projects[idx].status_engineer === "Received" ? 
-                          <td>
-                          <Button
-                            variant="success"
-                            size="sm"
-                            onClick={e =>
-                              this.patchStatusProject(
-                                idx,
-                                "On Process",
-                                "On Process"
-                              )
-                            }
-                          >
-                            Acc
-                          </Button>
-                          <Button
-                            variant="outline-danger"
-                            size="sm"
-                            onClick={e =>
-                              this.patchStatusProject(
-                                idx,
-                                "Declined",
-                                "Declined"
-                              )
-                            }
-                          >
-                            Decline
-                          </Button>
-                        </td> : this.state.projects[idx].status_engineer === "On Process" ? 
-                          <td>
-                          <Button
-                            variant="success"
-                            size="sm"
-                            onClick={e =>
-                              this.patchStatusProject(
-                                idx,
-                                "Completed",
-                                "Completed"
-                              )
-                            }
-                          >
-                            Send Project
-                          </Button>
-                          <Button
-                            variant="outline-danger"
-                            size="sm"
-                            onClick={e =>
-                              this.patchStatusProject(
-                                idx,
-                                "Abandoned",
-                                "Abandoned"
-                              )
-                            }
-                          >
-                            Decline
-                          </Button>
-                        </td> : <td/>}
 
-                          
+                          {this.state.projects[idx].status_engineer ===
+                          "Received" ? (
+                            <td>
+                              <Button
+                                variant="success"
+                                size="sm"
+                                onClick={e =>
+                                  this.patchStatusProject(
+                                    idx,
+                                    "On Process",
+                                    "On Process"
+                                  )
+                                }
+                              >
+                                Acc
+                              </Button>
+                              <Button
+                                variant="outline-danger"
+                                size="sm"
+                                onClick={e =>
+                                  this.patchStatusProject(
+                                    idx,
+                                    "Declined",
+                                    "Declined"
+                                  )
+                                }
+                              >
+                                Decline
+                              </Button>
+                            </td>
+                          ) : this.state.projects[idx].status_engineer ===
+                            "On Process" ? (
+                            <td>
+                              <Button
+                                variant="success"
+                                size="sm"
+                                onClick={e =>
+                                  this.patchStatusProject(
+                                    idx,
+                                    "Completed",
+                                    "Completed"
+                                  )
+                                }
+                              >
+                                Send Project
+                              </Button>
+                              <Button
+                                variant="outline-danger"
+                                size="sm"
+                                onClick={e =>
+                                  this.patchStatusProject(
+                                    idx,
+                                    "Abandoned",
+                                    "Abandoned"
+                                  )
+                                }
+                              >
+                                Decline
+                              </Button>
+                            </td>
+                          ) : (
+                            <td />
+                          )}
                         </tr>
                       ))}
                     </tbody>
@@ -451,14 +468,14 @@ class Engineer extends Component {
                     }}
                   />
                   <Form.Label className="update-description-text-engineer">
-                    Description
+                    Title
                   </Form.Label>
                   <Form.Control
                     className="update-description-control-engineer"
                     type="text"
-                    defaultValue={this.state.description}
+                    defaultValue={this.state.title}
                     onChange={e => {
-                      this.setState({ description: e.target.value });
+                      this.setState({ title: e.target.value });
                       console.log(e.target.value);
                     }}
                   />
