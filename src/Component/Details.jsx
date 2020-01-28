@@ -36,6 +36,7 @@ class Details extends Component {
     await axios
       .get(url[0])
       .then(res => {
+        console.log("ahoi", res);
         let DateofBirth = res.data[0].DateofBirth;
         DateofBirth = DateofBirth.split("T");
         DateofBirth = DateofBirth[0];
@@ -63,7 +64,7 @@ class Details extends Component {
         });
       })
       .catch(err => console.log(err));
-      console.log(this.props.company.companyBeta.id)
+    console.log(this.props.company.companyBeta.id);
   };
   handlingHireButton = () => {
     const url = "https://hiring-channel-app.herokuapp.com/api/projects";
@@ -75,7 +76,7 @@ class Details extends Component {
       status_project: "Sent",
       status_engineer: "Received"
     };
-    console.log('DETAILS : ', data)
+    console.log("DETAILS : ", data);
     axios
       .post(url, data)
       .then(res => {
@@ -109,7 +110,7 @@ class Details extends Component {
       DateCreated,
       DateUpdated
     } = this.state;
-    
+
     return (
       <div className="container-home">
         <Navbar className="navbar-style">
@@ -129,7 +130,13 @@ class Details extends Component {
           <p className="profile">Engineer Profile </p>
         </div>
         <div className="card-container-detail">
-          <Cards idengineer={this.props.location.state.idengineer} nama={Name} title={Title} description={Description} skills={Skills} />
+          <Cards
+            idengineer={this.props.location.state.idengineer}
+            nama={Name}
+            title={Title}
+            description={Description}
+            skills={Skills}
+          />
 
           <div className="crud-engineer-profile">
             <p className="update-name-text-engineer">Name</p>
