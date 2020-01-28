@@ -30,7 +30,7 @@ class Login extends Component {
     };
 
     axios
-      .post("https://hiring-channel-app.herokuapp.com/auth/login", data)
+      .post("http://3.92.225.54:8000/auth/login", data)
       .then(res => {
         if (res.data.status === 200) {
           this.setState({

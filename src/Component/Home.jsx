@@ -61,8 +61,8 @@ class Home extends Component {
     }
 
     const url = [
-      "https://hiring-channel-app.herokuapp.com/api/" + role + "/get/" + usernameLocal,
-      "https://hiring-channel-app.herokuapp.com/api/projects"
+      "http://3.92.225.54:8000/api/" + role + "/get/" + usernameLocal,
+      "http://3.92.225.54:8000/api/projects"
     ];
 
     let config = {
@@ -190,7 +190,7 @@ class Home extends Component {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
     const url =
-      "https://hiring-channel-app.herokuapp.com/api/company/" +
+      "http://3.92.225.54:8000/api/company/" +
       parseInt(this.state.companyBeta.id);
     let data = {
       Name: this.state.nama,
