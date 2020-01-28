@@ -15,7 +15,7 @@ class Cards extends Component {
     };
   }
   getprojects = async () => {
-    let url = ['http://3.92.225.54:8000/api/projects/' + this.props.idengineer]
+    let url = ['https://hiring-channel-app.herokuapp.com/api/projects/' + this.props.idengineer]
     await axios
       .get(url[0])
       .then(res => {

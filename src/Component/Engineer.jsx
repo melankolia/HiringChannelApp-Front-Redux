@@ -67,11 +67,11 @@ class Engineer extends Component {
     }
 
     const url = [
-      "http://3.92.225.54:8000/api/" +
+      "https://hiring-channel-app.herokuapp.com/api/" +
         role +
         "/get/" +
         usernameLocal,
-      "http://3.92.225.54:8000/api/projects"
+      "https://hiring-channel-app.herokuapp.com/api/projects"
     ];
 
     const config = {
@@ -126,7 +126,7 @@ class Engineer extends Component {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
     const url =
-      "http://3.92.225.54:8000/api/engineer/" +
+      "https://hiring-channel-app.herokuapp.com/api/engineer/" +
       parseInt(this.state.id);
     let data = {
       Name: this.state.nama,
@@ -165,7 +165,7 @@ class Engineer extends Component {
   postSkill = () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = "http://3.92.225.54:8000/api/engineer/skills";
+    const url = "https://hiring-channel-app.herokuapp.com/api/engineer/skills";
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
     let data = {
       id_Engineer: this.state.id,
@@ -203,7 +203,7 @@ class Engineer extends Component {
   deleteSkills = () => {
     let usernameLocal = localStorage.getItem("username :");
     let token = localStorage.getItem("token :");
-    const url = `http://3.92.225.54:8000/api/engineer/skills/${this.state.id}`;
+    const url = `https://hiring-channel-app.herokuapp.com/api/engineer/skills/${this.state.id}`;
     let headers = { Authorization: "Bearer " + token, username: usernameLocal };
     if (this.state.skillupdate || this.state.skilldelete) {
       axios
@@ -237,7 +237,7 @@ class Engineer extends Component {
 
   patchStatusProject = (idx, status_project, status_engineer) => {
     const url =
-      "http://3.92.225.54:8000/api/projects/" +
+      "https://hiring-channel-app.herokuapp.com/api/projects/" +
       this.state.projects[idx].No;
 
     const data = {
