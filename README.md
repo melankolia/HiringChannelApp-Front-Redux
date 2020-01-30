@@ -1,4 +1,4 @@
-<h3> Hiring Chanel App</h3>
+<h2> Hiring Chanel App</h3>
 <image width="200" src=./web_hi_res_512.png />
 <p>
 <a href="https://hiringchannelapp.netlify.com/login">View Demo</a>
@@ -48,7 +48,8 @@ A Website for company to scouting and hiring available Engineer based on prefere
       <image width="400" src='./Design/Hire Pages.png' />
   </span>
   </p>
-  ## Contributors
+
+## Contributors
 <center>
   <table>
     <tr>
