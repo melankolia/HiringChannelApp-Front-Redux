@@ -70,3 +70,8 @@ A Website for company to scouting and hiring available Engineer based on prefere
     </tr>
   </table>
 </center>
+
+## Related Project
+* [`Frontend-HiringChannelApp-ReactNative`](https://github.com/melankolia/HiringChannel-ReactNative)
+* [`Backend-HiringChannelApp`](https://github.com/melankolia/HiringChannelApp)
+
